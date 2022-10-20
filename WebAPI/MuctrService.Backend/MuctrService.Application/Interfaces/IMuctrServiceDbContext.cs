@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MuctrService.Domain;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MuctrService.Application.Interfaces
 {
