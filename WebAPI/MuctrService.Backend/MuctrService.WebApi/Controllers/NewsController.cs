@@ -38,7 +38,7 @@ namespace MuctrService.WebApi.Controllers
             {
                 var query = new GetNewsListQuery
                 {
-                    Limit = 10
+                    Limit = (int)limit
                 };
 
                 var vm = await Mediator.Send(query);

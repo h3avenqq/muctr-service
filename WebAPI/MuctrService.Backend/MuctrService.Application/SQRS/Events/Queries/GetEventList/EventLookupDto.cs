@@ -18,7 +18,7 @@ namespace MuctrService.Application.SQRS.Events.Queries.GetEventList
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Event, EventDetailsVm>()
+            profile.CreateMap<Event, EventLookupDto>()
                 .ForMember(eventDto => eventDto.Id,
                     opt => opt.MapFrom(eventSrc => eventSrc.Id))
                 .ForMember(eventDto => eventDto.Title,

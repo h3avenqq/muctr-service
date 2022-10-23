@@ -22,7 +22,7 @@ namespace MuctrService.Application.SQRS.Events.Queries.GetEventDetails
         public async Task<EventDetailsVm> Handle(GetEventDetailsQuery request, CancellationToken cancellationToken)
         {
             var entity =
-                _dbContext.Events.FirstOrDefaultAsync(events =>
+                await _dbContext.Events.FirstOrDefaultAsync(events =>
                     events.Id == request.Id, cancellationToken);
 
             if (entity == null)

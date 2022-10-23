@@ -22,7 +22,6 @@ namespace MuctrService.Application.SQRS.News.Queries.GetNewsDetails
         public async Task<NewsDetailsVm> Handle(GetNewsDetailsQuery request, 
             CancellationToken cancellationToken)
         {
-            Console.WriteLine("Ищу новость епт!");
             var entity =
                 await _dbContext.News.FirstOrDefaultAsync(news =>
                     news.Id == request.Id, cancellationToken);
