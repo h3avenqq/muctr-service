@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "News";
+}
+
+<div class="headers-of-main-page">
+    <a asp-controller="Home" asp-action="GetAllNews">Новостная лента</a>
+</div>
+<ul class="news-and-actions">
+    @for(int i = 0; i < 10; i++)
+    {
+    <li class="container">
+        <img src="https://www.muctr.ru/upload/iblock/6a7/qckar4yx4byy5cw2r02r03hedshvpei7.jpg" />
+
+        <div>
+            <h5><a asp-controller="Home" asp-action="GetNews">ОТКРЫТА ЛАБОРАТОРИЯ МИРОВОГО УРОВНЯ ПРИ КАФЕДРЕ ФИЗИЧЕСКОЙ ХИМИИ</a></h5>
+            <p>В РХТУ им. Д.И. Менделеева на кафедре физической химии состоялось торжественное открытие новой «Лаборатории функциональных материалов для молекулярной электроники». Техническое оснащение лаборатории мирового уровня осуществлено в рамках участия университета в программе стратегического академического лидерства «Приоритет 2030».</p>
+        </div>
+        </li>
+        @if (i!= 9)
+        {
+         <div class="for-border"></div>   
+        }
+    }
+</ul>

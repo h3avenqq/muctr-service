@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "News";
+}
+
+<div class="headers-of-main-page">
+    <a asp-controller="Home" asp-action="GetAllActions">Последние события</a>
+</div>
+<ul class="news-and-actions">
+    @for(int i = 0; i < 10; i++)
+    {
+    <li class="container">
+        <img src="https://www.muctr.ru/upload/iblock/45c/j0qpeq6kr4r4zlx8q33h489u3xzhhy2l.png" />
+
+        <div>
+            <h5><a asp-controller="Home" asp-action="GetActions">Самое захватывающее, яркое и масштабное IT-соревнование года. Это больше, чем хакатон</a></h5>
+            <p>Открыта регистрация на конкурс Лидеры цифровой трансформации, где тысячи студентов и представителей IT-профессий создадут сервисы для улучшения жизни горожан</p>
+        </div>
+    </li>
+    @if (i != 9)
+        {
+         <div class="for-border"></div>   
+        }
+    }
+</ul>
