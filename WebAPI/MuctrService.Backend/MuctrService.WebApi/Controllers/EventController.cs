@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MuctrService.Application.SQRS.Events.Commands.DeleteEvent;
 using MuctrService.Application.SQRS.Events.Queries.GetEventDetails;
 using MuctrService.Application.SQRS.Events.Queries.GetEventList;
 using System;
@@ -45,6 +46,19 @@ namespace MuctrService.WebApi.Controllers
             }
 
             return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new DeleteEventCommand 
+            { 
+                Id = id 
+            };
+
+            await Mediator.Send(command);
+
+            return NoContent();
         }
     }
 }

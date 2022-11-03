@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MuctrService.Application.SQRS.News.Commands.DeleteNews;
 using MuctrService.Application.SQRS.News.Queries.GetNewsDetails;
 using MuctrService.Application.SQRS.News.Queries.GetNewsList;
 using System;
@@ -47,6 +48,19 @@ namespace MuctrService.WebApi.Controllers
             }
 
             return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new DeleteNewsCommand
+            {
+                Id = id
+            };
+
+            await Mediator.Send(command);
+
+            return NoContent();
         }
     }
 }
