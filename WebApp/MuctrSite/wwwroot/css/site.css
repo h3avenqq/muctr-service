@@ -397,3 +397,53 @@ input[name="t"] {
     height: 50px;
     width: 100%;
 }
+
+.students-nav {
+    margin-top: -16px;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: rgb(222, 226, 230);
+    border-radius: 0 0 15px 15px;
+}
+
+.students-nav a {
+    color: rgba(21, 127, 196);
+    font-weight: 500;
+}
+
+.students-accord .accordion-body{
+    font-size: 15px !important;
+}
+
+.students-block {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    box-shadow: 0 0 10px 5px rgba(21, 127, 196);
+    border-radius: 10px;
+    padding-left: 4%;
+    padding-right: 7%;
+    font-size: 15px;
+}
+.students-block img {
+    display: block;
+    margin: 0 auto;
+    max-height: 500px;
+}
+
+.students-block h1{
+    text-align: center;
+    font-size: 35px;
+}
+
+.students-block h2{
+    text-align: center;
+    font-size: 25px;
+}
+
+.students-block h3{
+    font-size: 20px;
+}
