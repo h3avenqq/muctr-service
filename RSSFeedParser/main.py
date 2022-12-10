@@ -1,44 +1,30 @@
-from bs4 import BeautifulSoup
-import requests
+import mysql.connector
+from parser import parse_events, parse_news
 
 NEWS_URL = 'https://www.muctr.ru/bitrix/rss.php?ID=10&TYPE=news&LIMIT=20'
 EVENTS_URL = 'https://www.muctr.ru/bitrix/rss.php?ID=19&TYPE=notifies&LIMIT=10'
 
 
-def get_content_from_RSS(rss_url: str) -> BeautifulSoup:
-    feed_data = requests.get(rss_url)
-    return BeautifulSoup(feed_data.content, 'xml')
+def insert_info_into_database():
+    try:
+        with mysql.connector.connect(host='host',
+                                     database='host',
+                                     user='user',
+                                     password='password') as connection:
+            with connection.cursor() as cursor:
+                news_insert_query = """INSERT INTO News (Title, Description, PublicationDate, MediaUrl) 
+                VALUES (%s, %s, %s, %s)"""
+                events_insert_query = """INSERT INTO Events (Title, Description, PublicationDate, MediaUrl) 
+                VALUES (%s, %s, %s, %s)"""
+                cursor.executemany(news_insert_query, parse_news(NEWS_URL))
+                connection.commit()
+                cursor.executemany(events_insert_query, parse_events(EVENTS_URL))
+                connection.commit()
 
 
-def parse_news(rss_url: str) -> list:
-    soup = get_content_from_RSS(rss_url)
-    items = soup.find_all('item')
-    news = []
-
-    for item in items:
-        piece_of_news = parse_item(item)
-        news.append(piece_of_news)
-
-    return news
+    except mysql.connector.Error as error:
+        print(error)
 
 
-def parse_events(rss_url: str) -> list:
-    soup = get_content_from_RSS(rss_url)
-    items = soup.find_all('item')
-    events = []
-
-    for item in items:
-        event = parse_item(item)
-        events.append(event)
-
-    return events
-
-
-def parse_item(item: BeautifulSoup) -> dict:
-    return {
-            'title': item.title.text,
-            'description': item.description.text,
-            'media_url': item.enclosure['url'],
-            'publication_date': item.pubDate.text,
-        }
-
+if __name__ == '__main__':
+    insert_info_into_database()
