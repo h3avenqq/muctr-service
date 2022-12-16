@@ -47,8 +47,8 @@ using(var scope = app.Services.CreateScope())
 }
 
 app.UseRouting();
-app.UseHttpsRedirection();
 app.UseCors("AllowAll");
+app.UseHttpsRedirection();
 
 app.UseEndpoints(endpoints =>
 {

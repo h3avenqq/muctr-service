@@ -12,11 +12,17 @@ namespace MuctrService.Persistence
 
         public DbSet<News> News { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Professor> Professors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new NewsConfiguration());
             builder.ApplyConfiguration(new EventConfiguration());
+            builder.ApplyConfiguration(new FacultyConfiguration());
+            builder.ApplyConfiguration(new DepartmentConfiguration());
+            builder.ApplyConfiguration(new ProfessorConfiguration());
 
             base.OnModelCreating(builder);
         }

@@ -19,33 +19,30 @@ namespace MuctrService.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<EventDetailsVm>> Get(Guid id, int? limit, bool? unfinished)
+        public async Task<ActionResult<EventListVm>> GetAll(int limit, bool unfinished)
         {
-            if (id != Guid.Empty)
+            var query = new GetEventListQuery
             {
-                var query = new GetEventDetailsQuery
-                {
-                    Id = id
-                };
+                Limit = (int)limit,
+                Unfinished = (bool)unfinished
+            };
 
-                var vm = await Mediator.Send(query);
+            var vm = await Mediator.Send(query);
 
-                return Ok(vm);
-            }
-            else if (limit!=null && unfinished != null)
+            return Ok(vm);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<EventDetailsVm>> Get(Guid id)
+        {
+            var query = new GetEventDetailsQuery
             {
-                var query = new GetEventListQuery
-                {
-                    Limit = (int)limit,
-                    Unfinished = (bool)unfinished
-                };
+                Id = id
+            };
 
-                var vm = await Mediator.Send(query);
+            var vm = await Mediator.Send(query);
 
-                return Ok(vm);
-            }
-
-            return NotFound();
+            return Ok(vm);
         }
 
         [HttpDelete("{id}")]

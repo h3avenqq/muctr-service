@@ -19,35 +19,31 @@ namespace MuctrService.WebApi.Controllers
             _mapper = mapper;
         }
 
-        //TODO: Надо зарефакторить это все как нить через перегрузки а то на хуйню похоже
-        //да и написано что возвращает NewsDetailsVm а по факту может и другую хуйню вернуть ы
         [HttpGet]
-        public async Task<ActionResult<NewsDetailsVm>> Get(Guid id, int? limit)
+        public async Task<ActionResult<NewsListVm>> GetAll(int limit)
         {
-            if (id != Guid.Empty)
+            var query = new GetNewsListQuery
             {
-                var query = new GetNewsDetailsQuery
-                {
-                    Id = id
-                };
+                Limit = (int)limit
+            };
 
-                var vm = await Mediator.Send(query);
+            var vm = await Mediator.Send(query);
 
-                return Ok(vm);
-            }
-            else if (limit is not null)
+            return Ok(vm);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<NewsDetailsVm>> Get(Guid id)
+        {
+            var query = new GetNewsDetailsQuery
             {
-                var query = new GetNewsListQuery
-                {
-                    Limit = (int)limit
-                };
+                Id = id
+            };
 
-                var vm = await Mediator.Send(query);
+            var vm = await Mediator.Send(query);
 
-                return Ok(vm);
-            }
-
-            return NotFound();
+            return Ok(vm);
+            
         }
 
         [HttpDelete("{id}")]
@@ -62,5 +58,6 @@ namespace MuctrService.WebApi.Controllers
 
             return NoContent();
         }
+
     }
 }

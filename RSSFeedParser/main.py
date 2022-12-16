@@ -1,4 +1,4 @@
-import mysql.connector
+import
 from parser import parse_events, parse_news
 
 NEWS_URL = 'https://www.muctr.ru/bitrix/rss.php?ID=10&TYPE=news&LIMIT=20'

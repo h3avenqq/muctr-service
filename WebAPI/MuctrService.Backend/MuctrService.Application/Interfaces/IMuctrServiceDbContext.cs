@@ -9,6 +9,9 @@ namespace MuctrService.Application.Interfaces
     {
         public DbSet<News> News { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Professor> Professors { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
     }
