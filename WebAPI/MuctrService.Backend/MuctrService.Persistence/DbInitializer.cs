@@ -1,10 +1,12 @@
-﻿namespace MuctrService.Persistence
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace MuctrService.Persistence
 {
     public class DbInitializer
     {
         public static void Initialize(MuctrServiceDbContext context)
         {
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
         }
     }
 }

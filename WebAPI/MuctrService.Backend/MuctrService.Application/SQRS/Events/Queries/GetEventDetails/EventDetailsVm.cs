@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MuctrService.Application.Common.Mappings;
-using MuctrService.Application.SQRS.Events.Queries.GetEventList;
 using MuctrService.Domain;
 using System;
 
