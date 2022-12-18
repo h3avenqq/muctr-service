@@ -11,7 +11,7 @@ namespace MuctrService.Application.SQRS.Professors.Queries.GetProfessorList
         public string Surname { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
-        public Department Department { get; set; }
+        public Guid DepartmentId { get; set; }
         public string Position { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
@@ -27,8 +27,8 @@ namespace MuctrService.Application.SQRS.Professors.Queries.GetProfessorList
                     opt => opt.MapFrom(p => p.FirstName))
                 .ForMember(pDto => pDto.SecondName,
                     opt => opt.MapFrom(p => p.SecondName))
-                .ForMember(pDto => pDto.Department,
-                    opt => opt.MapFrom(p => p.Department))
+                .ForMember(pDto => pDto.DepartmentId,
+                    opt => opt.MapFrom(p => p.Department.Id))
                 .ForMember(pDto => pDto.Position,
                     opt => opt.MapFrom(p => p.Position))
                 .ForMember(pDto => pDto.PhoneNumber,

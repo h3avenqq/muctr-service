@@ -24,10 +24,9 @@ namespace MuctrService.WebApi.Controllers
                 FacultuId = facultyId
             };
 
-            var vm = Mediator.Send(professorQuery);
+            var vm = await Mediator.Send(professorQuery);
 
-            //return Ok(vm);
-            return BadRequest();
+            return Ok(vm);
         }
     }
 }
