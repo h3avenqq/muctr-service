@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using MuctrService.Application.SQRS.Faculties.Queries.GetFacultyDetails;
 using MuctrService.Application.SQRS.Faculties.Queries.GetFacultyList;
-using System;
 using System.Threading.Tasks;
 
 namespace MuctrService.WebApi.Controllers
@@ -27,17 +25,5 @@ namespace MuctrService.WebApi.Controllers
             return Ok(vm);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<FacultyDetailsVm>> Get(Guid id)
-        {
-            var query = new GetFacultiesDetailsQuery
-            {
-                Id = id
-            };
-
-            var vm = await Mediator.Send(query);
-
-            return Ok(vm);
-        }
     }
 }

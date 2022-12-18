@@ -42,7 +42,7 @@ using(var scope = app.Services.CreateScope())
     }
     catch(Exception e)
     {
-       Console.WriteLine(e.Message);
+        Console.WriteLine(e.Message);
     }
 }
 

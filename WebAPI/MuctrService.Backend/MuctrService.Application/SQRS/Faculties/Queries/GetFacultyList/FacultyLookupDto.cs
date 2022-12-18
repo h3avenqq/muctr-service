@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using MuctrService.Application.Common.Mappings;
-using MuctrService.Application.SQRS.Faculties.Queries.GetFacultyDetails;
 using MuctrService.Domain;
 using System;
-using System.Collections.Generic;
 
 namespace MuctrService.Application.SQRS.Faculties.Queries.GetFacultyList
 {
