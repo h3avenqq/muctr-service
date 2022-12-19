@@ -9,5 +9,7 @@ namespace MuctrService.Domain
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<Department> Departments { get; set; }
+        public string MediaUrl { get; set; }
+
     }
 }

@@ -15,5 +15,6 @@ namespace MuctrService.Domain
         public string PhoneNumber { get; set; }
         [EmailAddress]
         public string Email { get; set; }
+        public string MediaUrl { get; set; }
     }
 }

@@ -7,7 +7,8 @@ namespace MuctrService.Domain
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
-        public DateTime PublicationDate { get; set; }
         public EducationType EducationType { get; set; }
+        public DateTime PublicationDate { get; set; }
+
     }
 }
