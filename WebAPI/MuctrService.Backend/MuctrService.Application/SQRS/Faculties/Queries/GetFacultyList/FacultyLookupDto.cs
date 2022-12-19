@@ -22,7 +22,7 @@ namespace MuctrService.Application.SQRS.Faculties.Queries.GetFacultyList
                 .ForMember(fVm => fVm.Description,
                     opt => opt.MapFrom(f => f.Description))
                 .ForMember(fVm => fVm.MediaUrl,
-                    opt => opt.MapFrom(f => f.MediaUrl);
+                    opt => opt.MapFrom(f => f.MediaUrl));
         }
     }
 }
