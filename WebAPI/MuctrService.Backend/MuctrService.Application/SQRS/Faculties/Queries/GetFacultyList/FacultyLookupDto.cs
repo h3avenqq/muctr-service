@@ -10,7 +10,6 @@ namespace MuctrService.Application.SQRS.Faculties.Queries.GetFacultyList
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string MediaUrl { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -20,9 +19,7 @@ namespace MuctrService.Application.SQRS.Faculties.Queries.GetFacultyList
                 .ForMember(fVm => fVm.Name,
                     opt => opt.MapFrom(f => f.Name))
                 .ForMember(fVm => fVm.Description,
-                    opt => opt.MapFrom(f => f.Description))
-                .ForMember(fVm => fVm.MediaUrl,
-                    opt => opt.MapFrom(f => f.MediaUrl));
+                    opt => opt.MapFrom(f => f.Description));
         }
     }
 }
