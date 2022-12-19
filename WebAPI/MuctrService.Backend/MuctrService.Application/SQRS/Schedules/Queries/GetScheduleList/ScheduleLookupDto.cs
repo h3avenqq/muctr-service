@@ -10,7 +10,7 @@ namespace MuctrService.Application.SQRS.Schedules.Queries.GetScheduleList
         public Guid EducationTypeId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
-        public string EducationType { get; set; }
+        public Guid EducationType { get; set; }
         public DateTime PublicationDate { get; set; }
 
         public void Mapping(Profile profile)
