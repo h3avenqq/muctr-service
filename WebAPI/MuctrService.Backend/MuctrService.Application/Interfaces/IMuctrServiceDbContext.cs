@@ -14,6 +14,7 @@ namespace MuctrService.Application.Interfaces
         public DbSet<Professor> Professors { get; set; }
         public DbSet<EducationType> EducationTypes { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<StudentsInfo> StudentsInfo { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
     }

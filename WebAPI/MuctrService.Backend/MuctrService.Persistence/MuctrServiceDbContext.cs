@@ -17,6 +17,7 @@ namespace MuctrService.Persistence
         public DbSet<Professor> Professors { get; set; }
         public DbSet<EducationType> EducationTypes { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<StudentsInfo> StudentsInfo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +28,7 @@ namespace MuctrService.Persistence
             builder.ApplyConfiguration(new ProfessorConfiguration());
             builder.ApplyConfiguration(new ScheduleConfiguration());
             builder.ApplyConfiguration(new EducationTypeConfiguration());
+            builder.ApplyConfiguration(new StudentsInfoConfiguration());
 
             base.OnModelCreating(builder);
         }
