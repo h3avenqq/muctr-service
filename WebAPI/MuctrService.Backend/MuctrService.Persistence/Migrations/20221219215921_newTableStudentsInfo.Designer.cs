@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MuctrService.Persistence;
 
@@ -11,9 +12,10 @@ using MuctrService.Persistence;
 namespace MuctrService.Persistence.Migrations
 {
     [DbContext(typeof(MuctrServiceDbContext))]
-    partial class MuctrServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221219215921_newTableStudentsInfo")]
+    partial class newTableStudentsInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,7 +247,8 @@ namespace MuctrService.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
 
                     b.Property<string>("Name")
                         .IsRequired()

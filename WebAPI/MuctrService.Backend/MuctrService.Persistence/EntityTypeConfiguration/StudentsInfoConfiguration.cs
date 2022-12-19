@@ -11,7 +11,6 @@ namespace MuctrService.Persistence.EntityTypeConfiguration
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => x.Id).IsUnique();
             builder.Property(x => x.Name).HasMaxLength(250);
-            builder.Property(x => x.Description).HasMaxLength(1500);
         }
     }
 }
