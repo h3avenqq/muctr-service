@@ -15,6 +15,7 @@ namespace MuctrService.Application.SQRS.Professors.Queries.GetProfessorList
         public string Position { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public string MediaUrl { get; set; }
 
         public void Mapping(Profile profile)
         {
@@ -34,7 +35,9 @@ namespace MuctrService.Application.SQRS.Professors.Queries.GetProfessorList
                 .ForMember(pDto => pDto.PhoneNumber,
                     opt => opt.MapFrom(p => p.PhoneNumber))
                 .ForMember(pDto => pDto.Email,
-                    opt => opt.MapFrom(p => p.Email));
+                    opt => opt.MapFrom(p => p.Email))
+                .ForMember(pDto => pDto.MediaUrl,
+                    opt => opt.MapFrom(p => p.MediaUrl));
         }
     }
 }
