@@ -7,15 +7,17 @@ namespace MuctrService.Application.SQRS.Schedules.Queries.GetScheduleList
 {
     public class ScheduleLookupDto : IMapWith<Schedule>
     {
+        public Guid Id { get; set; }
         public Guid EducationTypeId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
-        public Guid EducationType { get; set; }
         public DateTime PublicationDate { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Schedule, ScheduleLookupDto>()
+                .ForMember(sDto => sDto.Id,
+                    opt => opt.MapFrom(s => s.Id))
                 .ForMember(sDto => sDto.EducationTypeId,
                     opt => opt.MapFrom(s => s.EducationType.Id))
                 .ForMember(sDto => sDto.Name,
