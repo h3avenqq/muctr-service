@@ -95,6 +95,7 @@ header a img {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+    background-color: white !important;
 }
 
 .swiper-slide p{
@@ -107,27 +108,39 @@ header a img {
     font-size: 25px;
 }
 
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.swiper-slide {
+    display: block !important;
+    width: 100% !important;
+    max-height: 500px !important;
+    object-fit: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: white !important;
 }
 
 .swiper-v {
-    background: #eee;
+    background: white;
+}
+
+.dates {
+    padding-top: 2px;
+    padding-left: 1rem;
+    color: rgb(176, 197, 219);
+    font-size: 15px;
 }
 
 .more-n-a{
     text-align: center;
     list-style-type: none;
-    padding-top: 1rem;
+    padding-top: -10px;
 }
 
 .more-n-a img {
     width: 60%;
     object-fit: cover;
     margin-bottom: 20px;
+    display: block;
+    margin: 0 auto;
 }
 
 .more-n-a h5{
@@ -177,7 +190,8 @@ header a img {
 
 .department-human li.container img {
     object-fit: cover;
-    max-width: 30%;
+    width: 280px !important;
+    height: 350px;
 }
 
 .department-human li.container div {
@@ -446,4 +460,18 @@ input[name="t"] {
 
 .students-block h3{
     font-size: 20px;
+}
+
+.study_npm, .way_npm {
+    width: 150px;
+}
+
+.departments img{
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
+}
+
+.contacts_npm{
+    max-width: 80px !important;
 }

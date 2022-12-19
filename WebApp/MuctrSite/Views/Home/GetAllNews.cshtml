@@ -1,24 +1,25 @@
-﻿@{
-    ViewData["Title"] = "News";
+﻿@model NewsList
+@{
+    ViewData["Title"] = "Новости";
 }
 
 <div class="headers-of-main-page">
     <a asp-controller="Home" asp-action="GetAllNews">Новостная лента</a>
 </div>
 <ul class="news-and-actions">
-    @for(int i = 0; i < 10; i++)
+    @foreach(News item in Model.News)
     {
     <li class="container">
-        <img src="https://www.muctr.ru/upload/iblock/6a7/qckar4yx4byy5cw2r02r03hedshvpei7.jpg" />
+        <img src="@item.mediaUrl" />
 
         <div>
-            <h5><a asp-controller="Home" asp-action="GetNews">ОТКРЫТА ЛАБОРАТОРИЯ МИРОВОГО УРОВНЯ ПРИ КАФЕДРЕ ФИЗИЧЕСКОЙ ХИМИИ</a></h5>
-            <p>В РХТУ им. Д.И. Менделеева на кафедре физической химии состоялось торжественное открытие новой «Лаборатории функциональных материалов для молекулярной электроники». Техническое оснащение лаборатории мирового уровня осуществлено в рамках участия университета в программе стратегического академического лидерства «Приоритет 2030».</p>
+            <h5><a asp-controller="Home" asp-action="GetNews" asp-route-id="@item.id">@item.title</a></h5>
+            <p>@Html.Raw(item.description.Split("<br>")[0])</p>
         </div>
         </li>
-        @if (i!= 9)
+        @if(item != Model.News.Last())
         {
-         <div class="for-border"></div>   
+            <div class="for-border"></div>   
         }
     }
 </ul>

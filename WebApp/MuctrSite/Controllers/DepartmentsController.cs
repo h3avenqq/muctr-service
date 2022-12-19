@@ -1,17 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MuctrSite.Models;
 
 namespace MuctrSite.Controllers
 {
     public class DepartmentsController : Controller
     {
-        public IActionResult Index()
+        static HttpClient httpClient = new HttpClient();
+        public async Task<IActionResult> Index()
         {
-            return View();
+            FacultyList _db = await httpClient.GetFromJsonAsync<FacultyList>("https://localhost:7035/api/faculty");
+            return View(_db);
         }
 
-        public IActionResult GetDepartment()
+        public async Task<IActionResult> GetDepartment(Guid? id)
         {
-            return View();
+            DepAndEmpl _db = new DepAndEmpl();
+
+
+            FacultyList _faculty = await httpClient.GetFromJsonAsync<FacultyList>("https://localhost:7035/api/faculty");
+            foreach (Faculty fac in _faculty.Faculties)
+                if (fac.id == id)
+                {
+                    _db.FacultyName = fac.name;
+                    break;
+                }
+            _db.Departments = await httpClient.GetFromJsonAsync<DepList>($"https://localhost:7035/api/department?facultyId={id}");
+            _db.Professors = await httpClient.GetFromJsonAsync<EmployersList>($"https://localhost:7035/api/professor?facultyId={id}");
+
+
+            EmployersList emplList = new EmployersList();
+            foreach (Employers empl in _db.Professors.Professors)
+                if (empl.position == "Заведующий кафедрой")
+                    emplList.Professors.Add(empl);
+            foreach (Employers empl in _db.Professors.Professors)
+                if (empl.position == "Профессор")
+                    emplList.Professors.Add(empl);
+            foreach (Employers empl in _db.Professors.Professors)
+                if (empl.position != "Профессор" && empl.position != "Заведующий кафедрой")
+                    emplList.Professors.Add(empl);
+
+
+            _db.Professors = emplList;
+            return View(_db);
         }
     }
 }

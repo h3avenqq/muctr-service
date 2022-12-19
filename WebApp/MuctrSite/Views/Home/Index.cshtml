@@ -1,35 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model NewsAndEvents
+@{
+    ViewData["Title"] = "Главная";
 }
 
 <div class="swiper mySwiper swiper-h">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background: url('../img/crs_1.jpg');">
-            <p>
-                <strong>Образование</strong> <br />
-                65 профессий по 6 стратегическим меганаправлениям:<br>
-                - зеленые технологии,<br>
-                - химическое производство будущего,<br>
-                - технологии двойного назначения,<br>
-                - образование для будущего,<br>
-                - геном материалов,<br>
-                - качество жизни.<br>
-            </p>
-        </div>
+        <div class="swiper-slide" style="background: url('../img/crs_1.jpg');"></div>
         <div class="swiper-slide">
             <div class="swiper mySwiper2 swiper-v">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">Vertical Slide 1</div>
-                <div class="swiper-slide">Vertical Slide 2</div>
-                <div class="swiper-slide">Vertical Slide 3</div>
-                <div class="swiper-slide">Vertical Slide 4</div>
-                <div class="swiper-slide">Vertical Slide 5</div>
+                <div class="swiper-slide" style="background: url('https://www.molnet.ru/mos/image?objectId=696363');"></div>
+                <div class="swiper-slide" style="background: url('https://avatars.mds.yandex.net/get-altay/1042100/2a00000167a64d91f98f8ca69cc0033bac78/XXL');"></div>
+                <div class="swiper-slide" style="background: url('https://moschem.olimpiada.ru/upload/images/3e.jpg');"></div>
+                <div class="swiper-slide" style="background: url('https://www.mos.ru/upload/newsfeed/pressevents/sl4(64).jpg');"></div>
+                <div class="swiper-slide" style="background: url('https://edcommunity.ru/upload/iblock/a32/IMG_4986.jpg');"></div>
             </div>
             <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class="swiper-slide">Horizontal Slide 3</div>
-        <div class="swiper-slide">Horizontal Slide 4</div>
+        <div class="swiper-slide" style="background: url('https://www.muctr.ru/upload/news/files/2017/o2.JPG');"></div>
+        <div class="swiper-slide" style="background: url('https://www.muctr.ru/upload/news/files/2017/worldskills3b.jpg');"></div>
     </div>
     <div class="swiper-pagination"></div>
 </div>
@@ -38,19 +28,19 @@
     <a asp-controller="Home" asp-action="GetAllNews">Новостная лента</a>
 </div>
 <ul class="news-and-actions">
-    @for(int i = 0; i < 3; i++)
+    @foreach(News item in Model.News.News)
     {
     <li class="container">
-        <img src="https://www.muctr.ru/upload/iblock/6a7/qckar4yx4byy5cw2r02r03hedshvpei7.jpg" />
+        <img src="@item.mediaUrl" />
 
         <div>
-            <h5><a asp-controller="Home" asp-action="GetNews">ОТКРЫТА ЛАБОРАТОРИЯ МИРОВОГО УРОВНЯ ПРИ КАФЕДРЕ ФИЗИЧЕСКОЙ ХИМИИ</a></h5>
-            <p>В РХТУ им. Д.И. Менделеева на кафедре физической химии состоялось торжественное открытие новой «Лаборатории функциональных материалов для молекулярной электроники». Техническое оснащение лаборатории мирового уровня осуществлено в рамках участия университета в программе стратегического академического лидерства «Приоритет 2030».</p>
+            <h5><a asp-controller="Home" asp-action="GetNews" asp-route-id="@item.id">@item.title</a></h5>
+            <p>@Html.Raw(item.description.Split("<br>")[0])</p>
         </div>
         </li>
-        @if (i != 2)
+        @if(item != Model.News.News.Last())
         {
-         <div class="for-border"></div>   
+            <div class="for-border"></div>   
         }
     }
 </ul>
@@ -59,19 +49,19 @@
     <a asp-controller="Home" asp-action="GetAllActions">Последние события</a>
 </div>
 <ul class="news-and-actions">
-    @for(int i = 0; i < 3; i++)
+    @foreach(Events item in Model.Events.Events)
     {
     <li class="container">
-        <img src="https://www.muctr.ru/upload/iblock/45c/j0qpeq6kr4r4zlx8q33h489u3xzhhy2l.png" />
+        <img src="@item.mediaUrl" />
 
         <div>
-            <h5><a asp-controller="Home" asp-action="GetActions">Самое захватывающее, яркое и масштабное IT-соревнование года. Это больше, чем хакатон</a></h5>
-            <p>Открыта регистрация на конкурс Лидеры цифровой трансформации, где тысячи студентов и представителей IT-профессий создадут сервисы для улучшения жизни горожан</p>
+            <h5><a asp-controller="Home" asp-action="GetActions" asp-route-id="@item.id">@item.title</a></h5>
+            <p>@Html.Raw(item.description.Split("<br>")[0])</p>
         </div>
     </li>
-    @if (i != 2)
+        @if(item != Model.Events.Events.Last())
         {
-         <div class="for-border"></div>   
+            <div class="for-border"></div>   
         }
     }
 </ul>

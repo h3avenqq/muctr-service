@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Departments";
+﻿@model DepAndEmpl
+@{
+    ViewData["Title"] = "Факультеты и кафедры";
+    int i = 0;
 }
 
 <div class="headers-of-dep-page">
@@ -7,54 +9,55 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
     </svg>
-    Факультет цифровых технологий и химического инжиниринга
+    @Model.FacultyName
 </div>
 
 <div class="accordion" id="accordionPanelsStayOpenExample">
-    @for (int i = 0; i < 8; i++)
+    @foreach (Departments item in Model.Departments.Departments)
     {
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="panelsStayOpen-heading-@i">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-@i" aria-expanded="true" aria-controls="panelsStayOpen-collapse-@i">
-                    Кафедра инженерного проектирования технологического оборудования
-                    </button>
-                </h2>
-                <div id="panelsStayOpen-collapse-@i" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading-@i">
-                    <div class="accordion-body">
-                        <h2>Работники и преподаватели</h2>
-                        <ul class="department-human">
-                            @for(int j = 0; j < 3; j++)
-                            {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-heading-@i">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-@i" aria-expanded="true" aria-controls="panelsStayOpen-collapse-@i">
+                @item.name
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapse-@i" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading-@i">
+                <div class="accordion-body">
+                    <h2>Работники и преподаватели</h2>
+                    <ul class="department-human">
+                    @foreach(Employers human in Model.Professors.Professors)
+                    {
+                        if (human.departmentId == item.id)
+                        {
                             <li class="container">
-                                <img src="https://www.muctr.ru/upload/iblock/8bc/8bcce608e662e9f52eb9129f6efc96fe.png" />
+                                <img src="@human.mediaUrl" alt="https://yt3.ggpht.com/ytc/AKedOLRpiliCezvvPXuffo5vzXLgU8m1yTEiBA07LN-9Bg=s900-c-k-c0x00ffffff-no-rj" />
                                     <table width="100%">
                                         <tr>
                                             <td colspan="2">
-                                                <h5>Аристов Виталий Михайлович</h5>
+                                                <h5>@human.surname @human.firstName @human.secondName</h5>
                                             </td>
                                         </tr>
                                         <tr style="background-color: rgb(230, 230, 230)">
                                             <td>Занимаемые должности</td>
-                                            <td>Заведующий кафедрой</td>
+                                            <td>@human.position</td>
                                         </tr>
                                         <tr>
                                             <td>Телефон</td>
-                                            <td>+7 (499) 978-68-17</td>
+                                            <td>@human.phoneNumber</td>
                                         </tr>
                                         <tr style="background-color: rgb(230, 230, 230)">
                                             <td>E-mail</td>
-                                            <td>aristov.v.m@muctr.ru</td>
+                                            <td>@human.email</td>
                                         </tr>
                                     </table>
                             </li>
-                                @if (j != 2)
-                                {
-                                 <div class="department-border"></div>   
-                                }
-                            }
-                        </ul>
-                    </div>
+                            <div class="department-border"></div>
+                        }
+                    }
+                    </ul>
                 </div>
             </div>
+        </div>
+        i++;
     }
 </div>

@@ -1,24 +1,25 @@
-﻿@{
-    ViewData["Title"] = "News";
+﻿@model EventsList
+@{
+    ViewData["Title"] = "События";
 }
 
 <div class="headers-of-main-page">
     <a asp-controller="Home" asp-action="GetAllActions">Последние события</a>
 </div>
 <ul class="news-and-actions">
-    @for(int i = 0; i < 10; i++)
+    @foreach(Events item in Model.Events)
     {
     <li class="container">
-        <img src="https://www.muctr.ru/upload/iblock/45c/j0qpeq6kr4r4zlx8q33h489u3xzhhy2l.png" />
+        <img src="@item.mediaUrl" />
 
         <div>
-            <h5><a asp-controller="Home" asp-action="GetActions">Самое захватывающее, яркое и масштабное IT-соревнование года. Это больше, чем хакатон</a></h5>
-            <p>Открыта регистрация на конкурс Лидеры цифровой трансформации, где тысячи студентов и представителей IT-профессий создадут сервисы для улучшения жизни горожан</p>
+            <h5><a asp-controller="Home" asp-action="GetActions" asp-route-id="@item.id">@item.title</a></h5>
+            <p>@Html.Raw(item.description.Split("<br>")[0])</p>
         </div>
     </li>
-    @if (i != 9)
+        @if(item != Model.Events.Last())
         {
-         <div class="for-border"></div>   
+            <div class="for-border"></div>   
         }
     }
 </ul>
