@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MuctrSite.Models;
 using System.Diagnostics;
 using System.Net.Http.Json;
@@ -24,11 +25,6 @@ namespace MuctrSite.Controllers
             return View(_db);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public async Task<IActionResult> GetAllNews()
         {
             NewsList _db = await httpClient.GetFromJsonAsync<NewsList>("https://localhost:7035/api/news?limit=10");
@@ -50,6 +46,20 @@ namespace MuctrSite.Controllers
         {
             Events _db = await httpClient.GetFromJsonAsync<Events>($"https://localhost:7035/api/event/{id}");
             return View(_db);
+        }
+
+        public async Task<IActionResult> DeleteNews(Guid? id)
+        {
+            HttpResponseMessage response = await httpClient.DeleteAsync(
+               $"https://localhost:7035/api/news/{id}");
+            return RedirectToAction("GetAllNews", "Home");
+        }
+
+        public async Task<IActionResult> DeleteAction(Guid? id)
+        {
+            HttpResponseMessage response = await httpClient.DeleteAsync(
+               $"https://localhost:7035/api/event/{id}");
+            return RedirectToAction("GetAllActions", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
