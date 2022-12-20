@@ -475,3 +475,20 @@ input[name="t"] {
 .contacts_npm{
     max-width: 80px !important;
 }
+
+.btn-inline{
+    display:inline;
+    border-radius: 0;
+    padding: 7px;
+}
+
+.edit-btn{
+    width:100%;
+    text-align: end;
+    margin-top: -10px !important;
+    margin-left: 42px !important;
+}
+
+.btn-add{
+    text-align: end;
+}
