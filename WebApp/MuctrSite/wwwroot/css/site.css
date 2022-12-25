@@ -58,7 +58,7 @@ header a img {
 
 .news-and-actions li.container img {
     object-fit: cover;
-    max-width: 30%;
+    max-width: 400px;
 }
 
 .news-and-actions li.container div {
@@ -190,8 +190,8 @@ header a img {
 
 .department-human li.container img {
     object-fit: cover;
-    width: 280px !important;
-    height: 350px;
+    min-width: 300px !important;
+    max-width: 300px !important;
 }
 
 .department-human li.container div {

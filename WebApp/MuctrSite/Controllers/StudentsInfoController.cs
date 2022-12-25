@@ -10,10 +10,10 @@ namespace MuctrSite.Controllers
         public async Task<IActionResult> Index()
         {
             ShadAndEdu _db = new ShadAndEdu();
-            _db.StudentsInfo = await httpClient.GetFromJsonAsync<StudentList>("https://localhost:7035/api/studentsinfo");
+            _db.StudentsInfo = await httpClient.GetFromJsonAsync<StudentList>("https://muctr-service-production.up.railway.app/api/studentsinfo");
 
 
-            _db.EducationTypes = await httpClient.GetFromJsonAsync<EducationList>("https://localhost:7035/api/educationtype");
+            _db.EducationTypes = await httpClient.GetFromJsonAsync<EducationList>("https://muctr-service-production.up.railway.app/api/educationtype");
             IList<EducationType> educationList = new List<EducationType>();
             foreach (EducationType type in _db.EducationTypes.EducationTypes)
                 if (type.name == "Бакалавриат/специалитет") { 
@@ -51,7 +51,7 @@ namespace MuctrSite.Controllers
 
 
 
-            _db.Schedules = await httpClient.GetFromJsonAsync<SchedulesList>("https://localhost:7035/api/schedule");
+            _db.Schedules = await httpClient.GetFromJsonAsync<SchedulesList>("https://muctr-service-production.up.railway.app/api/schedule");
             IList<Schedules> SchedulesList = new List<Schedules>();
             foreach (Schedules item in _db.Schedules.Schedules)
                 if (item.name == "I курс")

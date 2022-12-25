@@ -8,7 +8,7 @@ namespace MuctrSite.Controllers
         static HttpClient httpClient = new HttpClient();
         public async Task<IActionResult> Index()
         {
-            FacultyList _db = await httpClient.GetFromJsonAsync<FacultyList>("https://localhost:7035/api/faculty");
+            FacultyList _db = await httpClient.GetFromJsonAsync<FacultyList>("https://muctr-service-production.up.railway.app/api/faculty");
             return View(_db);
         }
 
@@ -17,15 +17,15 @@ namespace MuctrSite.Controllers
             DepAndEmpl _db = new DepAndEmpl();
 
 
-            FacultyList _faculty = await httpClient.GetFromJsonAsync<FacultyList>("https://localhost:7035/api/faculty");
+            FacultyList _faculty = await httpClient.GetFromJsonAsync<FacultyList>("https://muctr-service-production.up.railway.app/api/faculty");
             foreach (Faculty fac in _faculty.Faculties)
                 if (fac.id == id)
                 {
                     _db.FacultyName = fac.name;
                     break;
                 }
-            _db.Departments = await httpClient.GetFromJsonAsync<DepList>($"https://localhost:7035/api/department?facultyId={id}");
-            _db.Professors = await httpClient.GetFromJsonAsync<EmployersList>($"https://localhost:7035/api/professor?facultyId={id}");
+            _db.Departments = await httpClient.GetFromJsonAsync<DepList>($"https://muctr-service-production.up.railway.app/api/department?facultyId={id}");
+            _db.Professors = await httpClient.GetFromJsonAsync<EmployersList>($"https://muctr-service-production.up.railway.app/api/professor?facultyId={id}");
 
 
             EmployersList emplList = new EmployersList();

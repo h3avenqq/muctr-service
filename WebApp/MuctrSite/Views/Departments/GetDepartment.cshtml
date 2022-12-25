@@ -53,29 +53,34 @@
                     <ul class="department-human">
                     @foreach(Employers human in Model.Professors.Professors)
                     {
-                        if (human.departmentId == item.id)
+                        @if (human.departmentId == item.id)
                         {
                             <li class="container">
-                                <img src="@human.mediaUrl" alt="https://yt3.ggpht.com/ytc/AKedOLRpiliCezvvPXuffo5vzXLgU8m1yTEiBA07LN-9Bg=s900-c-k-c0x00ffffff-no-rj" />
-                                    <table width="100%">
-                                        <tr>
-                                            <td colspan="2">
-                                                <h5>@human.surname @human.firstName @human.secondName</h5>
-                                            </td>
-                                        </tr>
-                                        <tr style="background-color: rgb(230, 230, 230)">
-                                            <td>Занимаемые должности</td>
-                                            <td>@human.position</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Телефон</td>
-                                            <td>@human.phoneNumber</td>
-                                        </tr>
-                                        <tr style="background-color: rgb(230, 230, 230)">
-                                            <td>E-mail</td>
-                                            <td>@human.email</td>
-                                        </tr>
-                                    </table>
+                                @if (@human.mediaUrl != ""){
+                                    <img src="@human.mediaUrl" alt="" />
+                                }
+                                else{
+                                    <img src="https://vsegda-pomnim.com/uploads/posts/2022-04/1649232831_30-vsegda-pomnim-com-p-pustoe-litso-foto-37.jpg" alt="" />
+                                }
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <h5>@human.surname @human.firstName @human.secondName</h5>
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: rgb(230, 230, 230)">
+                                        <td>Занимаемые должности</td>
+                                        <td>@human.position</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Телефон</td>
+                                        <td>@human.phoneNumber</td>
+                                    </tr>
+                                    <tr style="background-color: rgb(230, 230, 230)">
+                                        <td>E-mail</td>
+                                        <td>@human.email</td>
+                                    </tr>
+                                </table>
                             </li>
                             <div class="department-border"></div>
                         }
