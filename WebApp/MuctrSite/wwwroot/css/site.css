@@ -194,7 +194,16 @@ header a img {
     max-width: 300px !important;
 }
 
-@media (max-width: 990px){
+@media (max-width: 990px) {
+    .department-human table h5 {
+        font-size: 18px !important;
+    }
+
+    .department-human table {
+        margin-left: 5% !important;
+        font-size: 14px !important;
+    }
+
     .department-human li.container img {
         object-fit: cover;
         min-width: 200px !important;
@@ -203,6 +212,15 @@ header a img {
 }
 
 @media (max-width: 770px) {
+    .department-human table h5 {
+        font-size: 15px !important;
+    }
+
+    .department-human table {
+        margin-left: 5% !important;
+        font-size: 10px !important;
+    }
+
     .department-human li.container img {
         object-fit: cover;
         min-width: 100px !important;
