@@ -29,6 +29,7 @@ namespace MuctrService.Application.SQRS.News.Commands.UpdateNews
 
             entity.Title = request.Title;
             entity.Description = request.Description;
+            entity.MediaUrl = request.MediaUrl;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

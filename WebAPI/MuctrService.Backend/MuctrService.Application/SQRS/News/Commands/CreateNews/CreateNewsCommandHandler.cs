@@ -19,15 +19,14 @@ namespace MuctrService.Application.SQRS.News.Commands.CreateNews
 
         public async Task<Guid> Handle(CreateNewsCommand request, CancellationToken cancellationToken)
         {
-            var id = Guid.NewGuid();
 
-            var news = new Domain.News()//что за хуйня нахуй тут домейн...
+            var news = new Domain.News()
             {
-                Id = id,
+                Id = Guid.NewGuid(),
                 Title = request.Title,
                 Description = request.Description,
                 PublicationDate = DateTime.Now,
-                MediaUrl = "/" + id
+                MediaUrl = request.MediaUrl
             };
 
             await _dbContext.News.AddAsync(news, cancellationToken);

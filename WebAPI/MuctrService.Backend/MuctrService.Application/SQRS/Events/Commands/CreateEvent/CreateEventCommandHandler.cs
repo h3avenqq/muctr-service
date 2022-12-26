@@ -18,17 +18,15 @@ namespace MuctrService.Application.SQRS.Events.Commands.CreateEvent
 
         public async Task<Guid> Handle(CreateEventCommand request, CancellationToken cancellationToken)
         {
-            var id = Guid.NewGuid();
-
             var newEvent = new Event()
             {
-                Id = id,
+                Id = Guid.NewGuid(),
                 Title = request.Title,
                 Description = request.Description,
                 PublicationDate = DateTime.Now,
                 StartTime = request.StartTime,
                 EndTime = request.EndTime,
-                MediaUrl = "/" + id
+                MediaUrl = request.MediaUrl
             };
 
             await _dbContext.Events.AddAsync(newEvent, cancellationToken);

@@ -19,8 +19,4 @@
     <ProjectReference Include="..\MuctrService.Persistence\MuctrService.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

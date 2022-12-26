@@ -28,6 +28,7 @@ namespace MuctrService.Application.SQRS.Events.Commands.UpdateEvent
             entity.Description = request.Description;
             entity.StartTime = request.StartTime;
             entity.EndTime = request.EndTime;
+            entity.MediaUrl = request.MediaUrl;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 
