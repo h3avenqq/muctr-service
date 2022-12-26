@@ -12,6 +12,7 @@ namespace MuctrService.Persistence.EntityTypeConfiguration
             builder.HasIndex(x => x.Id).IsUnique();
             builder.Property(x => x.Name).HasMaxLength(250);
             builder.HasMany(d => d.Departments).WithOne(f => f.Faculty);
+            builder.HasOne(x => x.Dean).WithOne(x=>x.Faculty).HasForeignKey<Dean>(x=>x.FacultyId);
         }
     }
 }
