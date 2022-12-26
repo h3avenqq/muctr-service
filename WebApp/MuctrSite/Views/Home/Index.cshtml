@@ -35,7 +35,7 @@
 
         <div>
             <h5><a asp-controller="Home" asp-action="GetNews" asp-route-id="@item.id">@item.title</a></h5>
-            <p>@Html.Raw(item.description.Split("<br>")[0])</p>
+            <p>@Html.Raw(item.description.Split("<br>")[0]) </p>
         </div>
         </li>
         @if(item != Model.News.News.Last())

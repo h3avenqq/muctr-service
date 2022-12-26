@@ -9,7 +9,6 @@ namespace MuctrSite.Models
         public Guid id { get; set; }
         public string? name { get; set; }
         public string? description { get; set; }
-        public string? mediaUrl { get; set; }
     }
 
     public class FacultyList

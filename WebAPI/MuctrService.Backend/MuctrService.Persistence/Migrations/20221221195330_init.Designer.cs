@@ -12,8 +12,8 @@ using MuctrService.Persistence;
 namespace MuctrService.Persistence.Migrations
 {
     [DbContext(typeof(MuctrServiceDbContext))]
-    [Migration("20221219215921_newTableStudentsInfo")]
-    partial class newTableStudentsInfo
+    [Migration("20221221195330_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -247,8 +247,7 @@ namespace MuctrService.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(1500)
-                        .HasColumnType("nvarchar(1500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
