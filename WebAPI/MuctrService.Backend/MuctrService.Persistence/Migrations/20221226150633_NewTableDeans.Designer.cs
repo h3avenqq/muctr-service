@@ -12,7 +12,7 @@ using MuctrService.Persistence;
 namespace MuctrService.Persistence.Migrations
 {
     [DbContext(typeof(MuctrServiceDbContext))]
-    [Migration("20221226143611_NewTableDeans")]
+    [Migration("20221226150633_NewTableDeans")]
     partial class NewTableDeans
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
