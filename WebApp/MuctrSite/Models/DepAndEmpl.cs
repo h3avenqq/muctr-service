@@ -8,5 +8,6 @@ namespace MuctrSite.Models
         public string? FacultyName { get; set; }
         public EmployersList? Professors { get; set; }
         public DepList? Departments { get; set; }
+        public Dean Dean { get; set; }
     }
 }

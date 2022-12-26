@@ -30,6 +30,7 @@ namespace MuctrSite.Controllers
                 if (response != null)
                 {
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(response));
+                    TempData["warning"] = "Добро пошаловать, " + user.Name;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -67,6 +68,7 @@ namespace MuctrSite.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            TempData["warning"] = "Вы вышли из аккаунта";
             return RedirectToAction("Index", "Home");
         }
     }

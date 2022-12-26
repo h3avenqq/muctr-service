@@ -876,3 +876,53 @@ input[name="t"] {
 .btn-add{
     text-align: end;
 }
+
+.Dean-div {
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.Dean-div h5 {
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 2px solid rgba(21, 127, 196);
+}
+
+.Dean-info img {
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+}
+
+.Dean-info h5{
+    border-bottom: 0px;
+}
+
+.Dean-info td{
+    text-align:center;
+    font-size: 18px;
+    padding: 8px 0 8px 0;
+}
+
+.Dean-info tr{
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 970px) {
+    .Dean-div h5 {
+        font-size: 25px !important;
+    }
+    .Dean-info h5 {
+        font-size: 20px !important;
+    }
+
+    .Dean-info img {
+        max-width: 100px !important;
+    }
+
+    .Dean-info td {
+        font-size: 12px;
+    }
+}

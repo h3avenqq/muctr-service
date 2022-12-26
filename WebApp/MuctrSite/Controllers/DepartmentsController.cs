@@ -16,6 +16,7 @@ namespace MuctrSite.Controllers
         {
             DepAndEmpl _db = new DepAndEmpl();
 
+            _db.Dean = await httpClient.GetFromJsonAsync<Dean>($"https://muctr-service-production.up.railway.app/api/dean/{id}");
 
             FacultyList _faculty = await httpClient.GetFromJsonAsync<FacultyList>("https://muctr-service-production.up.railway.app/api/faculty");
             foreach (Faculty fac in _faculty.Faculties)
