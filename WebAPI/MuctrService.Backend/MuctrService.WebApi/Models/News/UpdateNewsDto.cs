@@ -10,6 +10,7 @@ namespace MuctrService.WebApi.Models.News
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public DateTime PublicationDate { get; set; }
         public string MediaUrl { get; set; }
 
         public void Mapping(Profile profile)
@@ -21,6 +22,8 @@ namespace MuctrService.WebApi.Models.News
                     opt => opt.MapFrom(newsDto => newsDto.Title))
                 .ForMember(commandNews => commandNews.Description,
                     opt => opt.MapFrom(newsDto => newsDto.Description))
+                .ForMember(commandNews => commandNews.PublicationDate,
+                    opt => opt.MapFrom(newsDto => newsDto.PublicationDate))
                 .ForMember(commandNews => commandNews.MediaUrl,
                     opt => opt.MapFrom(newsDto => newsDto.MediaUrl));
 
