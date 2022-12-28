@@ -13,10 +13,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}
-
 .navbar-brand.border-end{
     padding-top: 0;
 }
@@ -934,6 +930,7 @@ input[name="t"] {
     .news-and-actions li.container img {
         object-fit: cover;
         max-width: 150px;
+        max-height: 200px;
     }
     .news-and-actions li.container h5 {
         font-size: 15px;

@@ -157,8 +157,8 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(builder: (context) => CardOfNews("Новость", list_news[index])));
                             },
                           ),
-                          ],
-                        );
+                        ],
+                      );
                     },
                     viewportFraction: 0.8,
                     scale: 0.9,
@@ -187,7 +187,156 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                Container(
+
+                Card(
+                    elevation: 4.0,
+                    child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CardOfNews("Новость", list_news[list_news.length -1 -0])));
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              subtitle: Text(DateFormat('dd.MM.yyyy').format(list_news[list_news.length -1 -0].publicationDate,)),
+                              title: Text(list_news[list_news.length -1 -0].title.toString(),
+                                  overflow: TextOverflow.ellipsis ),
+                            ),
+                            Container(
+                              height: 200.0,
+                              child: Ink.image(
+                                image: NetworkImage(list_news[list_news.length -1 -0].mediaUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              alignment: Alignment.centerLeft,
+                              child: Html(
+                                data: list_news[list_news.length -1 -0].description.substring(0, min(list_news[list_news.length -1 -0].description.length,150)) + "...",
+                                onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) async {
+                                  if (await canLaunchUrl(Uri.parse(url.toString())))
+                                    await launchUrl(Uri.parse(url.toString()));
+                                  else
+                                    // can't launch url, there is some error
+                                    throw "Could not launch $url";
+                                },
+                                // Styling with CSS (not real CSS)
+                                style: {
+                                  'h1': Style(color: Colors.red),
+                                  'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+                                  'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                    )
+                ),
+
+                Card(
+                    elevation: 4.0,
+                    child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CardOfNews("Новость", list_news[list_news.length -1 -1])));
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              subtitle: Text(DateFormat('dd.MM.yyyy').format(list_news[list_news.length -1 -1].publicationDate,)),
+                              title: Text(list_news[list_news.length -1 -1].title.toString(),
+                                  overflow: TextOverflow.ellipsis ),
+                            ),
+                            Container(
+                              height: 200.0,
+                              child: Ink.image(
+                                image: NetworkImage(list_news[list_news.length -1 -1].mediaUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              alignment: Alignment.centerLeft,
+                              child: Html(
+                                data: list_news[list_news.length -1 -1].description.substring(0, min(list_news[list_news.length -1 -1].description.length,150)) + "...",
+                                onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) async {
+                                  if (await canLaunchUrl(Uri.parse(url.toString())))
+                                    await launchUrl(Uri.parse(url.toString()));
+                                  else
+                                    // can't launch url, there is some error
+                                    throw "Could not launch $url";
+                                },
+                                // Styling with CSS (not real CSS)
+                                style: {
+                                  'h1': Style(color: Colors.red),
+                                  'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+                                  'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                    )
+                ),
+
+                Card(
+                    elevation: 4.0,
+                    child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CardOfNews("Новость", list_news[list_news.length -1 -2])));
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              subtitle: Text(DateFormat('dd.MM.yyyy').format(list_news[list_news.length -1 -2].publicationDate,)),
+                              title: Text(list_news[list_news.length -1 -2].title.toString(),
+                                  overflow: TextOverflow.ellipsis ),
+                            ),
+                            Container(
+                              height: 200.0,
+                              child: Ink.image(
+                                image: NetworkImage(list_news[list_news.length -1 -2].mediaUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              alignment: Alignment.centerLeft,
+                              child: Html(
+                                data: list_news[list_news.length -1 -2].description.substring(0, min(list_news[list_news.length -1 -2].description.length,150)) + "...",
+                                onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) async {
+                                  if (await canLaunchUrl(Uri.parse(url.toString())))
+                                    await launchUrl(Uri.parse(url.toString()));
+                                  else
+                                    // can't launch url, there is some error
+                                    throw "Could not launch $url";
+                                },
+                                // Styling with CSS (not real CSS)
+                                style: {
+                                  'h1': Style(color: Colors.red),
+                                  'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+                                  'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                    )
+                ),
+
+
+
+
+
+                /*Container(
                   child: Card(
                     elevation: 10,
                     child: InkWell(
@@ -221,7 +370,7 @@ class _HomePageState extends State<HomePage> {
                               'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
                             },
                           ),
-                            /*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*/
+                            *//*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*//*
                           ),
 
                           Row(children: [Text("  " + DateFormat('dd.MM.yyyy').format(list_news[list_news.length -1 -0].publicationDate,))])
@@ -265,7 +414,7 @@ class _HomePageState extends State<HomePage> {
                                 'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
                               },
                             ),
-                              /*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*/
+                              *//*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*//*
                             ),
 
                             Row(children: [Text("  " + DateFormat('dd.MM.yyyy').format(list_news[list_news.length -1 -1].publicationDate,))])
@@ -308,7 +457,7 @@ class _HomePageState extends State<HomePage> {
                                 'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
                               },
                             ),
-                              /*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*/
+                              *//*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*//*
                             ),
 
                             Row(children: [Text("  " + DateFormat('dd.MM.yyyy').format(list_news[list_news.length -1 -2].publicationDate,))])
@@ -316,7 +465,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     )
-                ),
+                ),*/
 
                 Container(
                   child: Card(
@@ -325,8 +474,8 @@ class _HomePageState extends State<HomePage> {
                       splashColor: Colors.blue.withAlpha(30),
                       onTap: () {
                         Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CreateNewsCard()));
+                            context,
+                            MaterialPageRoute(builder: (context) => CreateNewsCard()));
                       },
                       child: const SizedBox(
                         width: 100,
@@ -365,7 +514,157 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                Container(
+                Card(
+                    elevation: 4.0,
+                    child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CardOfEvent("Событие", list_events[list_events.length -1 -0])));
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              subtitle: Row(children: [Text(DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -0].startTime,)
+                                  + " - " + DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -0].endTime,)
+                              )]),
+                              title: Text(list_events[list_events.length -1 -0].title.toString(),
+                                  overflow: TextOverflow.ellipsis ),
+                            ),
+                            Container(
+                              height: 200.0,
+                              child: Ink.image(
+                                image: NetworkImage(list_events[list_events.length -1 -0].mediaUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              alignment: Alignment.centerLeft,
+                              child: Html(
+                                data: list_events[list_events.length -1 -0].description.substring(0, min(list_events[list_events.length -1 -0].description.length,150)) + "...",
+                                onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) async {
+                                  if (await canLaunchUrl(Uri.parse(url.toString())))
+                                    await launchUrl(Uri.parse(url.toString()));
+                                  else
+                                    // can't launch url, there is some error
+                                    throw "Could not launch $url";
+                                },
+                                // Styling with CSS (not real CSS)
+                                style: {
+                                  'h1': Style(color: Colors.red),
+                                  'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+                                  'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                    )
+                ),
+
+                Card(
+                    elevation: 4.0,
+                    child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CardOfEvent("Событие", list_events[list_events.length -1 -1])));
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              subtitle: Row(children: [Text(DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -1].startTime,)
+                                  + " - " + DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -1].endTime,)
+                              )]),
+                              title: Text(list_events[list_events.length -1 -1].title.toString(),
+                                  overflow: TextOverflow.ellipsis ),
+                            ),
+                            Container(
+                              height: 200.0,
+                              child: Ink.image(
+                                image: NetworkImage(list_events[list_events.length -1 -1].mediaUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              alignment: Alignment.centerLeft,
+                              child: Html(
+                                data: list_events[list_events.length -1 -1].description.substring(0, min(list_events[list_events.length -1 -1].description.length,150)) + "...",
+                                onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) async {
+                                  if (await canLaunchUrl(Uri.parse(url.toString())))
+                                    await launchUrl(Uri.parse(url.toString()));
+                                  else
+                                    // can't launch url, there is some error
+                                    throw "Could not launch $url";
+                                },
+                                // Styling with CSS (not real CSS)
+                                style: {
+                                  'h1': Style(color: Colors.red),
+                                  'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+                                  'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                    )
+                ),
+
+                Card(
+                    elevation: 4.0,
+                    child: InkWell(
+                        splashColor: Colors.blue.withAlpha(30),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => CardOfEvent("Событие", list_events[list_events.length -1 -2])));
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              subtitle: Row(children: [Text(DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -2].startTime,)
+                                  + " - " + DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -2].endTime,)
+                              )]),
+                              title: Text(list_events[list_events.length -1 -2].title.toString(),
+                                  overflow: TextOverflow.ellipsis ),
+                            ),
+                            Container(
+                              height: 200.0,
+                              child: Ink.image(
+                                image: NetworkImage(list_events[list_events.length -1 -2].mediaUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.all(16.0),
+                              alignment: Alignment.centerLeft,
+                              child: Html(
+                                data: list_events[list_events.length -1 -2].description.substring(0, min(list_events[list_events.length -1 -2].description.length,150)) + "...",
+                                onLinkTap: (String? url, RenderContext context, Map<String, String> attributes, dom.Element? element) async {
+                                  if (await canLaunchUrl(Uri.parse(url.toString())))
+                                    await launchUrl(Uri.parse(url.toString()));
+                                  else
+                                    // can't launch url, there is some error
+                                    throw "Could not launch $url";
+                                },
+                                // Styling with CSS (not real CSS)
+                                style: {
+                                  'h1': Style(color: Colors.red),
+                                  'p': Style(color: Colors.black87, fontSize: FontSize.medium),
+                                  'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                    )
+                ),
+
+                /* Container(
                     child: Card(
                       elevation: 10,
                       child: InkWell(
@@ -399,7 +698,7 @@ class _HomePageState extends State<HomePage> {
                                 'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
                               },
                             ),
-                              /*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*/
+                              *//*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*//*
                             ),
 
                             Row(children: [Text("  " + DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -0].startTime,)
@@ -445,7 +744,7 @@ class _HomePageState extends State<HomePage> {
                                 'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
                               },
                             ),
-                              /*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*/
+                              *//*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*//*
                             ),
 
                             Row(children: [Text("  " + DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -1].startTime,)
@@ -490,7 +789,7 @@ class _HomePageState extends State<HomePage> {
                                 'ul': Style(margin: const EdgeInsets.symmetric(vertical: 20))
                               },
                             ),
-                              /*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*/
+                              *//*Text( list_news[0].description, style: TextStyle(fontSize: 18),),*//*
                             ),
 
                             Row(children: [Text("  " + DateFormat('dd.MM.yyyy').format(list_events[list_events.length -1 -2].startTime,)
@@ -500,7 +799,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     )
-                ),
+                ),*/
 
 
                 Container(
@@ -510,8 +809,8 @@ class _HomePageState extends State<HomePage> {
                       splashColor: Colors.blue.withAlpha(30),
                       onTap: () {
                         Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CreateEventsCard()));
+                            context,
+                            MaterialPageRoute(builder: (context) => CreateEventsCard()));
                       },
                       child: const SizedBox(
                         width: 100,
@@ -563,7 +862,7 @@ class _CreateNewsCardState extends State<CreateNewsCard>{
                   child: Column(
                     children: [
                       ListTile(
-                        subtitle: Text(list_news[index].publicationDate.toString()),
+                        subtitle: Text(DateFormat('dd.MM.yyyy').format(list_news[index].publicationDate,)),
                         title: Text(list_news[index].title.toString(),
                             overflow: TextOverflow.ellipsis ),
                       ),
